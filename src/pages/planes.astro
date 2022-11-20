@@ -1,0 +1,62 @@
+---
+import { Paragraph, Typography } from '@/components/Typography';
+import { PLANES } from '@/constants/content';
+import { Plan } from '@/partials/Plan';
+import { Section } from '@/partials/Section';
+import Banner from '@/templates/Banner.astro';
+import { newTitle } from '@/utils/Functions';
+
+import { SideDrawer } from '../partials/Side';
+---
+
+<Banner
+  head={{ title: newTitle('Planes'), description: 'Conoce nuestros planes.' }}
+  content={{
+    title: 'Planes',
+    priority: 3,
+  }}
+  isHalf
+>
+  <main id="main-content">
+    <Section className="mx-auto w-full max-w-[1100px] lg:w-10/12">
+      <Typography variant="h2" className="w-9/12">Empecemos hoy.</Typography>
+      <Paragraph className="mt-4">
+        Para dar inicio al proceso de entrenamiento con School Cycling, deberás
+        llenar la ficha de antecedentes personales y deportiva. Gracias a la
+        información recolectada te ayudamos a escoger el que más se ajuste a tus
+        necesidades. Contamos con más de 12 planes de entrenamientos
+        estructurados para cada disciplina. Si tienes dudas, solo nos consultas
+        y te responderemos lo antes posible.
+      </Paragraph>
+    </Section>
+    {
+      PLANES.map((p) => {
+        return <Plan {...p} />;
+      })
+    }
+    <Section
+      hasIn
+      hasOut
+      bgColor="#00E9E9"
+      className="js--section-moreInfo mx-auto w-full"
+    >
+      <div class="mx-auto max-w-[1100px] lg:w-10/12">
+        <Typography variant="h2" className="w-9/12">Más información.</Typography
+        >
+        <Paragraph className="mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam,
+          sit similique suscipit dolore, delectus libero ex, sunt amet nisi
+          consequuntur obcaecati qui ab harum veritatis repellat cupiditate.
+          Doloremque, quisquam!
+        </Paragraph>
+      </div>
+    </Section>
+  </main>
+  <SideDrawer id="js--payment-drawer" />
+</Banner>
+<script>
+  import { Planes } from '@/app/Plan';
+  import { Parallax } from '../app/Parallax';
+  new Parallax('.planes', { magnitude: 3 });
+  new Planes();
+</script>

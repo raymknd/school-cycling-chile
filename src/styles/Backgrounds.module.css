@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.barrier {
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+}
+.media {
+    height: 100% !important;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(30%) grayscale(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    user-select: none;
+    background: gray;
+}
+.media.isPriority,
+.media.isPriority {
+    z-index: 1;
+}
+.media.isSecondary,
+.media.isSecondary {
+    z-index: 2;
+    opacity: 0%;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+@media only screen and (max-width: 768px) {
+  video.isSecondary,
+  img.isSecondary {
+    display: none
+  }
+}

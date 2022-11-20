@@ -1,0 +1,82 @@
+---
+import '../styles/globals.css';
+import '@fontsource/montserrat/300.css';
+import '@fontsource/montserrat/300-italic.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/400-italic.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/500-italic.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/600-italic.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/montserrat/700-italic.css';
+import '@fontsource/source-sans-pro/400.css';
+import '@fontsource/source-sans-pro/400-italic.css';
+import '@fontsource/source-sans-pro/700.css';
+import '@fontsource/source-sans-pro/700-italic.css';
+
+import { SEO } from 'astro-seo';
+
+import { AppConfig } from '@/utils/AppConfig';
+
+export interface IBase {
+  head: {
+    title: string;
+    description: string;
+  };
+}
+
+const {
+  head: { title, description },
+} = Astro.props as IBase;
+---
+
+<html lang={AppConfig.locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="escuela de ciclismo para adultos, escuela de ciclismo, escuela de ciclismo santiago chile, escuela de ciclismo para niños, escuela de ciclismo de ruta, escuela de ciclismo para niños santiago chile, ciclismo, school cycling, school cycling chile, ciclismo chile, chile, deportes, deportes chile"
+    />
+    <SEO
+      title={title}
+      description={`${description} | ${AppConfig.description}`}
+      canonical={'https://schoolcycling.cl'}
+      openGraph={{
+        basic: {
+          title: AppConfig.title,
+          type: 'website',
+          image: AppConfig.image,
+          url: 'https://schoolcycling/',
+        },
+        image: {
+          url: AppConfig.image,
+          alt: 'School Cycling',
+        },
+        optional: { locale: AppConfig.locale },
+      }}
+      noindex
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/0477585ef6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="flex flex-col">
+    <slot />
+    <script>
+      import { Global } from '@/app/Global';
+      import { iOS } from '@/utils/Functions';
+      if (iOS()) document.body.classList.add('isIOS');
+      const global = new Global();
+      global.initFullheightService();
+      global.initDisabledService();
+    </script>
+  </body>
+</html>

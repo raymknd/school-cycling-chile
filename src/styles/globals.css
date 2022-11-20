@@ -1,0 +1,33 @@
+body,html{
+  font-family: "Source Sans Pro", sans-serif;
+}
+.is-shown {
+  z-index: 2 !important;
+  opacity: 100% !important;
+  visibility: visible !important;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  color:#333333;
+  min-height: 100%;
+}
+[hidden] {
+  display: none;
+}
+strong {
+  font-weight: 700;
+}
+small {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+.divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
+}

@@ -1,0 +1,124 @@
+---
+import Banner from '@/templates/Banner.astro';
+import { newTitle, newWhatsappMessage } from '@/utils/Functions';
+
+import { Paragraph, Typography } from '../components/Typography';
+import { LinkButton, OutlinedButton } from '../partials/Button';
+import { Section } from '../partials/Section';
+import SectionStyles from '../styles/Section.module.scss';
+---
+
+<Banner
+  head={{
+    title: newTitle('Inicio'),
+    description: `La mejor versión de ti, hoy y ahora.`,
+  }}
+  content={{
+    title: 'Te guíamos a ser la mejor versión de ti.',
+    // subtitle:
+    //   'School Cycling es una empresa que entrega servicios de entrenamiento deportivo a las personas que se dedican al deporte, ya sea ciclismo de ruta, pista, mtb, gravel y todas sus disciplinas.',
+    buttonText: 'Quiero saber más',
+    priority: 0,
+  }}
+>
+  <main id="main-content">
+    <Section
+      bgColor="#fff"
+      image={{
+        src: '/static/images/eurasian-wigeon-4914971-removebg-preview.png',
+        alt: 'Pajaros volando',
+      }}
+    >
+      <Typography variant="h2">Tus metas, nuestras metas.</Typography>
+      <Paragraph className="mt-4"
+        >Aplicamos ciencias del rendimiento físico a ciclistas de todo tipo para
+        mejorar cada día, cuidar tu integridad y salud. Estamos comprometidos en
+        guiarte a tus metas y lograr que alcances la mejor versión de ti mismo.</Paragraph
+      >
+    </Section>
+    <Section
+      hasIn
+      hasOut
+      bgColor="#E8C617"
+      image={{
+        src: '/static/images/training-peaks-devices.png',
+        alt: 'Dispositivos con TrainingPeaks',
+        onLargeGoesFirst: true,
+      }}
+    >
+      <Typography variant="h2">Nuestra prioridad eres tú.</Typography>
+      <Paragraph className="mt-4">
+        Sabemos que tus metas son únicas, por esto utilizamos la plataforma
+        <strong>TrainingPeaks</strong> que permite que tus logros lleguen a destino
+        de manera efectiva. Gracias a esta plataforma tendremos acceso a información
+        valiosa como el control de tus cargas o la posibilidad de evaluar el grado
+        de cumplimiento que has logrado.
+      </Paragraph>
+      <!-- <div class="mt-5 flex flex-row items-center gap-3">
+        <img
+          class="w-44 opacity-80"
+          src="/static/images/trainingpeaks_logo_horizontal_black.png"
+          alt="Disponible en la App Store"
+        />
+      </div> -->
+    </Section>
+    <Section
+      bgColor="#fff"
+      image={{
+        src: '/static/images/nacho-paredes.png',
+        className:
+          'flex object-contain w-full sm:!w-auto mb-[-107px] md:mb-[-140px] lg:mb-[-145px] max-h-[400px]',
+        alt: 'Nacho Paredes, integrante de School Cycling',
+      }}
+    >
+      <Typography variant="h2">Gente común, cosas increibles.</Typography>
+      <Paragraph className="mt-3"
+        >Cuando buscas cumplir algún objetivo personal, deportivo o simplemente
+        de salud, siempre buscamos generar la instancia óptima e individualizar
+        tu planificación.</Paragraph
+      >
+      <small class="mt-3 block opacity-50">En la foto: Nacho Paredes, integrante de School Cycling</small>
+    </Section>
+    <Section
+      hasIn
+      hasOut
+      bgColor="#00E9E9"
+      image={{
+        src: '/static/images/ashkan-forouzani-29rLpFM74PE-unsplash-removebg-preview.png',
+        alt: 'None',
+        onLargeGoesFirst: true,
+        className: SectionStyles.lastHomeImage,
+      }}
+    >
+      <Typography variant="h2">Preparados... Listos... Fuera!</Typography>
+      <Paragraph className="mt-4"
+        >Comenzar tu camino con nosotros es muy fácil, solo debes completar un
+        formulario que nos permitirá conocerte mejor y designaremos un plan que
+        se ajuste a tus necesidades y metas. Contamos con más de 12 planes de
+        entrenamientos estructurados para cada disciplina. Si tienes dudas, solo
+        nos consultas y te responderemos lo antes posible.</Paragraph
+      >
+      <div class="mt-5 flex flex-row items-center gap-1">
+        <OutlinedButton href="/planes">Ver los planes</OutlinedButton>
+        <LinkButton
+          href={newWhatsappMessage('Hola! Necesito ayuda para elegir un plan.')}
+        >
+          <div class="flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp fa-xl"></i>
+            <span class="underline">Hablemos</span>
+          </div>
+        </LinkButton>
+      </div>
+    </Section>
+  </main>
+</Banner>
+<script>
+  import { Parallax } from '../app/Parallax';
+  new Parallax('.home', { magnitude: 3 });
+  const main = document.getElementById('main-content');
+  const button = document.querySelector('a#js--hero-button');
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    main.scrollIntoView();
+  });
+</script>

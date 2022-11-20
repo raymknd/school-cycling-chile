@@ -1,0 +1,47 @@
+---
+import { Footer } from '@/partials/Footer';
+import { Navbar } from '@/partials/Navbar';
+
+import { Hero } from '../partials/Hero';
+import type { IBase } from './Base.astro';
+import Base from './Base.astro';
+
+interface IFullHero extends IBase {
+  content: {
+    title: string;
+    subtitle?: string;
+    buttonText?: string;
+    priority: number;
+  };
+  isHalf?: boolean;
+}
+
+const {
+  head: { title, description },
+  content,
+  isHalf,
+} = Astro.props as IFullHero;
+---
+
+<Base head={{ title, description }}>
+  <Navbar />
+  <Hero
+    priority={content.priority}
+    title={content.title}
+    subtitle={content.subtitle}
+    buttonText={content.buttonText}
+    height={isHalf ? 'half' : undefined}
+  />
+  <slot />
+  <Footer />
+</Base>
+
+<script>
+  import { Nav } from '../app/Nav';
+  new Nav();
+  const anchor = document.getElementById('js--scroll-top');
+  anchor.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.body.scrollIntoView();
+  });
+</script>

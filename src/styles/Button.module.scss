@@ -1,0 +1,58 @@
+.outlinedButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 19px;
+  gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  transition: background .3s ease, color .3s ease;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+}
+.outlinedButton.buttonLight {
+  border: 2px solid white;
+  color: white;
+  &:hover:not(.disabled) {
+    background: white;
+    color: black;
+  }
+}
+.outlinedButton.buttonDark {
+  border: 2px solid #333333;
+  color: #333333;
+  &:hover:not(.disabled) {
+    background: #333333;
+    color: white;
+  }
+}
+.outlinedButton:global(.disabled), .linkButton:global(.disabled) {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+.linkButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 15px;
+  gap: 5px;
+  text-decoration: none;
+}
+.linkButton.buttonLight {
+  color: white;
+}
+.linkButton.buttonDark {
+  color: #333333;
+}

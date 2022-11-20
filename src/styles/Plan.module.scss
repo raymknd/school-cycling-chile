@@ -1,0 +1,23 @@
+.list {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  li:first-child {
+    margin-top: 1rem;
+  }
+  li {
+    margin-top: .8rem;
+  }
+}
+.typographyNumber {
+  opacity: 0.6;
+  font-style: normal;
+  font-weight: 300;
+}
+.planPrice {
+  opacity: 0.8;
+}
+.info {
+  min-width: 50%;
+}

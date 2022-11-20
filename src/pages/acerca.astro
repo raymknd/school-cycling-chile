@@ -1,0 +1,171 @@
+---
+import { Paragraph } from '@/components/Typography';
+import { OutlinedButton } from '@/partials/Button';
+import Banner from '@/templates/Banner.astro';
+import { newTitle, newWhatsappMessage } from '@/utils/Functions';
+import { Share } from '@/utils/Share';
+
+import { ArticleContainer } from '../partials/Container';
+import { BorderImage } from '../partials/Image';
+import TypographyStyles from '../styles/Typography.module.scss';
+
+const share = new Share();
+
+const description = `Conoce más acerca de School Cycling`;
+---
+
+<Banner
+  head={{ title: newTitle('Acerca de'), description }}
+  content={{
+    title: 'Acerca de',
+    priority: 1,
+  }}
+  isHalf
+>
+  <main id="main-content">
+    <div
+      class="mx-auto flex flex-col items-center justify-center lg:flex-row lg:items-start"
+    >
+      <div class="flex flex-col items-center pt-12 opacity-70 lg:py-12">
+        <small class="mb-2">Compartir</small>
+        <div class="flex flex-row items-center lg:flex-col">
+          <a
+            class="p-2 lg:py-2 lg:px-0"
+            href="#"
+            id="js--share-article"
+            data-shareData={JSON.stringify({
+              text: newTitle(description),
+              url: 'https://schoolcycling.cl/acerca',
+            })}
+          >
+            <i class="fa-solid fa-link fa-xl"></i>
+            <i class="fa-solid fa-circle-notch fa-xl animate-spin" hidden></i>
+            <i class="fa-solid fa-circle-check fa-xl" hidden></i>
+            <i class="fa-solid fa-triangle-exclamation fa-xl" hidden></i>
+          </a>
+          <a
+            class="p-2 lg:py-2 lg:px-0"
+            href={share.whatsapp(
+              description,
+              'https://schoolcycling.cl/acerca'
+            )}
+          >
+            <i class="fa-brands fa-whatsapp fa-xl"></i>
+          </a>
+          <a
+            class="p-2 lg:py-2 lg:px-0"
+            href={share.facebook('https://schoolcycling.cl/acerca')}
+          >
+            <i class="fa-brands fa-facebook fa-xl"></i>
+          </a>
+          <a
+            class="p-2 lg:py-2 lg:px-0"
+            href={share.twitter(description, 'https://schoolcycling.cl/acerca')}
+          >
+            <i class="fa-brands fa-twitter fa-xl"></i>
+          </a>
+        </div>
+      </div>
+      <ArticleContainer noMargin>
+        <Paragraph>
+          José Zapata Riquelme es el fundador de School Cycling, Profesor de
+          Educación Física titulado de la UMCE, Entrenador de ciclismo y
+          ciclista desde los 10 años de edad. Corredor Federado, dedicado a las
+          disciplinas de ruta, pista y mtb como una de sus pasiones. Jose formó
+          SCYCH en un momento de plena confusión mundial. Nada más ni nada menos
+          que en la pandemia del Covid-19, donde este proyecto fue llevado a
+          cabo de forma online para seguir estando junto a sus alumnos y seres
+          queridos de ese entonces.
+        </Paragraph>
+        <Paragraph className="mt-4">
+          Jose Zapata ha logrado múltiples títulos en campeonatos nacionales de
+          Pista en categorías menores y juegos binacionales en categoría junior.
+          También logró obtener medallas de oro, plata y bronce en el campeonato
+          nacional de pista del año 2014, en su primer año de esta categoría
+          ELITE. Posteriormente buscó complementar el entrenamiento con sus
+          estudios y trabajo, logrando títulos cómo ganador de la 12° fecha del
+          campeonato Mendocino (2019), un 5°por etapa en la Vuelta Mendoza
+          (2019) y sus títulos más memorables y recientes que fueron dos 2°
+          lugares nuevamente en la Vuelta de Mendoza y un 2°lugar en la
+          clasificación general de las metas Sprint.
+        </Paragraph>
+        <BorderImage
+          src="/static/images/acercaDe-author-image.jpeg"
+          alt="Foto de José Kato Zapata"
+          className="my-8"
+        />
+        <Paragraph className="mt-4">
+          Con todo esto, Jose Kato Zapata, cómo lo hacen llamar, busca
+          incentivar y motivar a quienes no poseen del tiempo suficiente para
+          realizar sus preparaciones. Con el sistema utilizado en SCYCH todo
+          esto ya no es un problema, sino una herramienta útil para optimizar
+          tiempos y horarios para que puedas lograr tus objetivos.
+        </Paragraph>
+        <h2 class={`${TypographyStyles.heading} my-8 text-2xl`}>
+          ¿Qué es School Cycling entrenamiento deportivo?
+        </h2>
+        <Paragraph className="mt-4">
+          School Cycling es una empresa que entrega servicios de entrenamiento
+          deportivo a las personas que se dedican al deporte, ya sea ciclismo de
+          ruta, pista, mtb, gravel y todas sus disciplinas. También ofrece
+          planes para triatletas donde buscamos entregar planificaciones
+          ajustadas a cada individuo.
+        </Paragraph>
+        <Paragraph className="mt-4">
+          En esta empresa poseemos un grupo multidisciplinario que trabaja en
+          equipo para entregar el mejor servicio. Contamos con 2 Profesionales
+          de la Educación Física (Jose Zapata Riquelme y Katalina Cataldo Muñoz,
+          los cuales buscan educar a través de sus planificaciones y
+          entrenamientos realizados en terreno. Un kinesiólogo y Profesor de
+          Educación Física, experto en rehabilitación deportiva, el cual posee
+          las herramientas pedagógicas para educar al paciente sobre su lesión
+          (Carlos Zapata) y con una nutricionista deportiva, la cual busca
+          evaluar al paciente y entregar una pauta de alimentos que sea óptima
+          para cada individuo (Camila Alzérreca).
+        </Paragraph>
+        <h2 class={`${TypographyStyles.heading} my-8 text-2xl`}>
+          ¿Quieres saber más sobre cómo es el servicio de Coaching Deportivo?
+        </h2>
+        <Paragraph>
+          ¿Tienes dudas sobre las mejoras de condición física que puedes recibir
+          en School Cycling? Queremos entregarte la oportunidad de que puedas
+          conversar con uno de nuestros entrenadores antes de dar el salto para
+          inscribirte en nuestros programas.
+        </Paragraph>
+        <BorderImage
+          src="/static/images/school-cycling_about-quiero_saber_mas-photo.jpeg"
+          alt="Hola"
+          className="mt-8"
+        >
+          <div class="cuadroDeDudas">
+            <OutlinedButton
+              color="white"
+              href={newWhatsappMessage(
+                'Hola! Tengo dudas sobre las mejoras de condición física que puedo recibir.'
+              )}
+              ><div class="flex items-center">
+                Quiero saber más <i class="fa-solid fa-arrow-right fa-lg ml-2"
+                ></i>
+              </div>
+            </OutlinedButton>
+          </div>
+        </BorderImage>
+      </ArticleContainer>
+    </div>
+  </main>
+</Banner>
+<style lang="scss">
+  .cuadroDeDudas {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<script>
+  import { Share } from '@/app/Share';
+  import { Parallax } from '../app/Parallax';
+  new Parallax('.acercaDe', { magnitude: 3 });
+  new Share('#js--share-article');
+</script>

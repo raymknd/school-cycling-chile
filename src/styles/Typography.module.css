@@ -1,0 +1,11 @@
+.paragraph {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.heading {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+}/*# sourceMappingURL=Typography.module.css.map */
