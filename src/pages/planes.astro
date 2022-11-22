@@ -1,12 +1,14 @@
 ---
 import { Paragraph, Typography } from '@/components/Typography';
 import { PLANES } from '@/constants/content';
+import { OutlinedButton } from '@/partials/Button';
 import { Plan } from '@/partials/Plan';
 import { Section } from '@/partials/Section';
 import Banner from '@/templates/Banner.astro';
-import { newTitle } from '@/utils/Functions';
+import { newTitle, newWhatsappMessage } from '@/utils/Functions';
 
 import { SideDrawer } from '../partials/Side';
+import SectionStyles from '../styles/Section.module.scss';
 ---
 
 <Banner
@@ -38,17 +40,29 @@ import { SideDrawer } from '../partials/Side';
       hasIn
       hasOut
       bgColor="#00E9E9"
-      className="js--section-moreInfo mx-auto w-full"
+      image={{
+        src: '/static/images/ashkan-forouzani-29rLpFM74PE-unsplash-removebg-preview.png',
+        alt: 'None',
+        onLargeGoesFirst: true,
+        className: SectionStyles.lastHomeImage,
+      }}
     >
-      <div class="mx-auto max-w-[1100px] lg:w-10/12">
-        <Typography variant="h2" className="w-9/12">Más información.</Typography
-        >
-        <Paragraph className="mt-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim totam,
-          sit similique suscipit dolore, delectus libero ex, sunt amet nisi
-          consequuntur obcaecati qui ab harum veritatis repellat cupiditate.
-          Doloremque, quisquam!
-        </Paragraph>
+      <Typography variant="h2">¿Tienes dudas?</Typography>
+      <Paragraph className="mt-4"
+        >Comenzar tu camino con nosotros es muy fácil, solo debes completar un
+        formulario que nos permitirá conocerte mejor y designaremos un plan que
+        se ajuste a tus necesidades y metas. Contamos con más de 12 planes de
+        entrenamientos estructurados para cada disciplina. Si tienes dudas, solo
+        nos consultas y te responderemos lo antes posible.</Paragraph
+      >
+      <div class="mt-5 flex flex-row items-center gap-1">
+        <OutlinedButton
+          href={newWhatsappMessage('Hola! Necesito ayuda para elegir un plan.')}
+          ><div class="flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp fa-xl"></i>
+            <span>Hablemos</span>
+          </div>
+        </OutlinedButton>
       </div>
     </Section>
   </main>

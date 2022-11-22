@@ -16,15 +16,16 @@ const Footer = () => {
         <Typography variant="h4" className="mt-4">
           School Cycling Chile
         </Typography>
-        <Paragraph className="mt-2">
-          School Cycling Chile © 2022 Todos los derechos reservados.
+        <Paragraph className="mt-1">
+          Empecemos hoy a hacer cosas increíbles.
         </Paragraph>
         <small className={`${styles.small} mt-2 italic`}>
           Diseñado y desarrollado con &#60;3 por{' '}
           <a
             className="underline"
             target="_blank"
-            href="https://pcbkn.cl/web?utm_source=schoolcycling&utm_medium=footer"
+            rel="noopener noreferrer"
+            href="https://pcbkn.cl/proyectos/school-cycling?utm_source=schoolcycling&utm_medium=footer"
           >
             PcBkn
           </a>

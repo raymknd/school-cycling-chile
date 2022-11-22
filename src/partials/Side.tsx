@@ -87,6 +87,7 @@ const SideDrawer = (props: IDrawerProps) => {
               className="!w-full"
               href="#"
               target="_blank"
+              rel="noopener noreferrer"
               data-drawer="transferencia"
               disabled
             >
@@ -98,6 +99,7 @@ const SideDrawer = (props: IDrawerProps) => {
               disabled
               aria-label="Pagar con"
               target="_blank"
+              rel="noopener noreferrer"
               className="mt-3 !w-full"
               href="#"
               data-drawer="paymentGateway"

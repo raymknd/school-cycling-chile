@@ -34,21 +34,22 @@ export class Global {
   }
 
   initFullheightService() {
-    const classes = this.d.querySelectorAll(
-      `.${this.classes.fullViewportHeight}`
-    ) as NodeListOf<HTMLDivElement>;
+    // const classes = this.d.querySelectorAll(
+    //   `.${this.classes.fullViewportHeight}`
+    // ) as NodeListOf<HTMLDivElement>;
     const setSize = () => {
       const v =
         this.d.documentElement.clientHeight || this.w.innerHeight || false;
-      classes.forEach((e) => {
-        let h = v;
-        if (e.dataset.extra && v) {
-          const el = e.dataset.extra;
-          const val = Number(el);
-          h = v + val;
-        }
-        e.style.height = h ? `${h}px` : '100vh';
-      });
+      this.d.body.style.setProperty('--viewportHeight', `${v}px`);
+      // classes.forEach((e) => {
+      //   let h = v;
+      //   if (e.dataset.extra && v) {
+      //     const el = e.dataset.extra;
+      //     const val = Number(el);
+      //     h = v + val;
+      //   }
+      //   e.style.height = h ? `${h}px` : '100vh';
+      // });
     };
     this.w.addEventListener('DOMContentLoaded', setSize);
     this.w.addEventListener('resize', setSize);

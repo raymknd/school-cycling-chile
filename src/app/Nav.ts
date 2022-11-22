@@ -63,7 +63,7 @@ export class Nav {
       });
       this.b.style.overflow = 'hidden';
     } else {
-      this.b.removeAttribute('style');
+      this.b.style.overflow = '';
     }
   }
 }

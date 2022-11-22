@@ -12,10 +12,12 @@ const BorderImage = (props: IProps) => {
   const { children, ...rest } = props;
   return (
     <div className={`${props.className || ''} ${styles.root}`}>
-      <div className={styles.border} />
+      <div className={styles.leftCorner} />
+      <div className={styles.rightCorner} />
       {children && <div className={styles.content}>{children}</div>}
       <img
         {...rest}
+        draggable="false"
         className={`${styles.image} ${children ? styles.hasContent : ''}`}
       />
     </div>

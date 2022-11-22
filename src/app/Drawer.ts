@@ -252,7 +252,7 @@ export class Drawer {
 
   public handleDrawerClose(e: MouseEvent) {
     e.preventDefault();
-    this.b.removeAttribute('style');
+    this.b.style.overflow = '';
     this.close(() => {
       if (this.root && this.root.dataset.open === 'false') {
         this.reset();
