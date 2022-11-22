@@ -21,7 +21,7 @@ const Navbar = () => {
         <ul>
           {NAV_LINKS.map((l, i) => {
             return (
-              <li>
+              <li key={l.identificator}>
                 <a
                   href={l.href}
                   className="text-xl"

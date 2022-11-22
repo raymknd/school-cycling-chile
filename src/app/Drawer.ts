@@ -1,23 +1,11 @@
+import { newWhatsappMessage } from '@/utils/Functions';
+
 import type { IPlan, IPricesStructure } from '../partials/Plan';
 
 interface IOpenArgs {
   title?: string;
   description?: string;
   prices?: IPricesStructure;
-  billingCycles?: {
-    price: string;
-    id: string;
-    cycleType: string;
-  }[];
-  paymentGateway?: {
-    provider: string;
-    href?: string;
-    price?: string;
-  };
-  bankTransfer?: {
-    href: string;
-    price: string;
-  };
 }
 
 type Element = HTMLElement | null;
@@ -110,7 +98,7 @@ export class Drawer {
     // Backdrop
     this.backdrop = this.d.querySelector(`[data-backdrop="${rootSelector}"]`);
 
-    this.priceSeparator = '';
+    this.priceSeparator = '→';
 
     this.setDisplayData = this.setDisplayData.bind(this);
     this.clearAll = this.clearAll.bind(this);
@@ -122,41 +110,34 @@ export class Drawer {
     if (this.backdrop) this.backdrop.onclick = this.handleDrawerClose;
   }
 
-  // private getPriceStructure(p: string, s?: string) {
-  //   return ` ${this.priceSeparator} $${p}${s || ''}`;
-  // }
+  private getPriceStructure(p: string, s?: string) {
+    return `${this.priceSeparator} $${p}${s || ''}`;
+  }
 
   public setDisplayData(d: IOpenArgs) {
-    const {
-      paymentGateway,
-      bankTransfer,
-      title,
-      description,
-      prices,
-      billingCycles,
-    } = d;
+    const { title, description, prices } = d;
 
     // Payment gateway
-    if (
-      paymentGateway &&
-      this.paymentGateway &&
-      this.paymentGatewayPrice &&
-      this.paymentGatewayProvider
-    ) {
-      this.paymentGatewayProvider.innerHTML = paymentGateway.provider;
-      if (paymentGateway.href && paymentGateway.price) {
-        this.paymentGateway.ariaDisabled = 'false';
-        this.paymentGateway.classList.remove('disabled');
-        this.paymentGatewayPrice.innerHTML = paymentGateway.price;
-        this.paymentGateway.href = paymentGateway.href;
-      }
-    }
+    // if (
+    //   price &&
+    //   this.paymentGateway &&
+    //   this.paymentGatewayPrice &&
+    //   this.paymentGatewayProvider
+    // ) {
+    //   this.paymentGatewayProvider.innerHTML = paymentGateway.provider;
+    //   if (paymentGateway.href && paymentGateway.price) {
+    //     this.paymentGateway.ariaDisabled = 'false';
+    //     this.paymentGateway.classList.remove('disabled');
+    //     this.paymentGatewayPrice.innerHTML = paymentGateway.price;
+    //     this.paymentGateway.href = paymentGateway.href;
+    //   }
+    // }
 
     // Bank transfer
-    if (bankTransfer && this.transferencia && this.transferenciaPrice) {
-      this.transferencia.href = bankTransfer.href;
-      this.transferenciaPrice.innerHTML = bankTransfer.price;
-    }
+    // if (bankTransfer && this.transferencia && this.transferenciaPrice) {
+    //   this.transferencia.href = bankTransfer.href;
+    //   this.transferenciaPrice.innerHTML = bankTransfer.price;
+    // }
 
     // Title
     if (title && this.title) {
@@ -169,20 +150,40 @@ export class Drawer {
     }
 
     // Prices
-    if (prices && this.price && this.priceMonthly && this.priceQuarterly) {
-      this.priceMonthly.innerHTML = prices.monthly;
-      this.priceQuarterly.innerHTML = prices.quarterly;
-    }
+    if (
+      prices &&
+      this.price &&
+      this.priceMonthly &&
+      this.priceQuarterly &&
+      this.select &&
+      this.paymentGateway
+    ) {
+      this.priceMonthly.innerHTML = prices.monthly.bankTransfer.price;
+      this.priceQuarterly.innerHTML = prices.quarterly.bankTransfer.price;
 
-    // Select
-    if (billingCycles && this.select) {
-      billingCycles.forEach((b) => {
-        const a = this.d.createElement('option');
-        a.value = `${b.id}:${b.price}`;
-        a.innerHTML = b.cycleType;
-        a.dataset.data = JSON.stringify({ price: b.price, id: b.id });
-        if (this.select) this.select.appendChild(a);
+      const a = this.d.createElement('option');
+      const b = this.d.createElement('option');
+
+      a.value = JSON.stringify({
+        paymentGateway: prices.monthly.paymentGateway,
+        bankTransfer: prices.monthly.bankTransfer,
+        billingCycle: 'monthly',
       });
+      a.innerHTML = 'Mensual (1 mes)';
+
+      b.value = JSON.stringify({
+        paymentGateway: prices.quarterly.paymentGateway,
+        bankTransfer: prices.quarterly.bankTransfer,
+        billingCycle: 'quarterly',
+      });
+      b.innerHTML = 'Trimestral (3 meses)';
+
+      this.paymentGatewayProvider.innerHTML =
+        prices.monthly.paymentGateway.provider;
+      this.paymentGateway.ariaLabel = `Pagar con ${prices.monthly.paymentGateway.provider}`;
+
+      if (this.select) this.select.appendChild(a);
+      if (this.select) this.select.appendChild(b);
     }
   }
 
@@ -191,17 +192,28 @@ export class Drawer {
       title: '',
       description: '',
       prices: {
-        monthly: '',
-        quarterly: '',
-      },
-      paymentGateway: {
-        href: '',
-        price: '',
-        provider: '',
-      },
-      bankTransfer: {
-        price: '',
-        href: '',
+        monthly: {
+          bankTransfer: {
+            href: '',
+            price: '',
+          },
+          paymentGateway: {
+            provider: '',
+            href: '',
+            price: '',
+          },
+        },
+        quarterly: {
+          bankTransfer: {
+            href: '',
+            price: '',
+          },
+          paymentGateway: {
+            provider: '',
+            href: '',
+            price: '',
+          },
+        },
       },
     });
   }
@@ -214,6 +226,17 @@ export class Drawer {
       this.transferencia.classList.add('disabled');
       this.paymentGateway.ariaDisabled = 'true';
       this.paymentGateway.classList.add('disabled');
+      const a = this.d.createElement('option');
+      a.innerHTML = 'Elige una duración...';
+      a.disabled = true;
+      a.value = 'none';
+      a.selected = true;
+      this.select.appendChild(a);
+      this.paymentGateway.ariaLabel = 'Pagar con';
+      this.paymentGatewayPrice.innerHTML = '';
+      this.transferenciaPrice.innerHTML = '';
+      this.paymentGateway.href = '#';
+      this.transferencia.href = '#';
     }
   }
 
@@ -238,31 +261,37 @@ export class Drawer {
   }
 
   public open(data: IPlan, animationEnd?: (e: TransitionEvent) => any) {
-    const { title, price, description } = data;
-
     this.setDisplayData({
-      title,
-      description,
-      prices: {
-        monthly: price?.monthly ?? '',
-        quarterly: price?.quarterly ?? '',
-      },
-      paymentGateway: {
-        provider: '',
-      },
-      billingCycles: [
-        {
-          cycleType: 'Mensual (1 mes)',
-          id: 'monthly',
-          price: price?.monthly ?? '',
-        },
-        {
-          cycleType: 'Trimestral (3 meses)',
-          id: 'quarterly',
-          price: price?.quarterly ?? '',
-        },
-      ],
+      title: data.title,
+      description: data.description,
+      prices: data.price,
     });
+
+    if (this.select && this.paymentGateway) {
+      this.select.oninput = () => {
+        const r = this.select.value;
+        const v = JSON.parse(r);
+        this.paymentGateway.ariaDisabled = 'false';
+        this.paymentGateway.classList.remove('disabled');
+        this.transferencia.ariaDisabled = 'false';
+        this.transferencia.classList.remove('disabled');
+        this.paymentGatewayPrice.innerHTML = this.getPriceStructure(
+          v.paymentGateway.price,
+          '*'
+        );
+        this.paymentGateway.href = v.paymentGateway.href;
+        this.transferenciaPrice.innerHTML = this.getPriceStructure(
+          v.bankTransfer.price
+        );
+        this.transferencia.href = newWhatsappMessage(
+          `Hola! Quiero los datos de transferencia para el plan "${
+            data.title
+          } - ${
+            v.billingCycle === 'monthly' ? 'Mensual' : 'Trimestral'
+          }", por favor!`
+        );
+      };
+    }
 
     if (this.backdrop) this.backdrop.dataset.open = 'true';
     if (this.root) this.root.dataset.open = 'true';

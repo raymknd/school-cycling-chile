@@ -4,9 +4,21 @@ import { OutlinedButton } from './Button';
 import type { ISection } from './Section';
 import { Section } from './Section';
 
+export interface IPricesProviders {
+  bankTransfer: {
+    href: string;
+    price: string;
+  };
+  paymentGateway: {
+    provider: string;
+    href: string;
+    price: string;
+  };
+}
+
 export interface IPricesStructure {
-  monthly: string;
-  quarterly: string;
+  monthly: IPricesProviders;
+  quarterly: IPricesProviders;
 }
 
 export interface IPlanProps extends ISection {
@@ -14,10 +26,6 @@ export interface IPlanProps extends ISection {
   price: IPricesStructure;
   description: string;
   number: string;
-  paymentGateway: {
-    provider: string;
-    href: IPricesStructure;
-  };
 }
 
 export interface IPlan {
@@ -25,11 +33,10 @@ export interface IPlan {
   price?: IPricesStructure;
   number?: string;
   description?: string;
-  paymentGateway?: IPlanProps['paymentGateway'];
 }
 
 const Plan = (props: IPlanProps) => {
-  const { title, price, number, description, paymentGateway, ...rest } = props;
+  const { title, price, number, description, ...rest } = props;
   return (
     <Section {...rest} id={title.toLowerCase().replaceAll(' ', '_')}>
       <div className="mx-auto w-fit max-w-[1100px] lg:flex lg:w-10/12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
@@ -38,9 +45,9 @@ const Plan = (props: IPlanProps) => {
             <span className={styles.typographyNumber}>{number} |</span> {title}
           </Typography>
           <Typography variant="h4" className={`${styles.planPrice} mt-4`}>
-            ${price.quarterly} &times; 3 meses
+            ${price.quarterly.bankTransfer.price} &times; 3 meses
             <small className="block italic opacity-60">
-              ${price.monthly} &times; 1 mes
+              ${price.monthly.bankTransfer.price} &times; 1 mes
             </small>
           </Typography>
         </div>
@@ -49,13 +56,7 @@ const Plan = (props: IPlanProps) => {
           <Paragraph className="mt-4">{description}</Paragraph>
           <OutlinedButton
             href="#"
-            data-plan={JSON.stringify({
-              title,
-              price,
-              description,
-              number,
-              paymentGateway,
-            })}
+            data-plan={JSON.stringify(props)}
             className="mt-6"
           >
             Quiero este

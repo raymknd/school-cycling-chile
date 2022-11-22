@@ -76,8 +76,6 @@ const SideDrawer = (props: IDrawerProps) => {
                 <option value="none" disabled>
                   Elige una duración...
                 </option>
-                <option value="quarterly:3.990">3 meses</option>
-                <option value="monthly:4.350">1 mes</option>
               </select>
               <div className="absolute top-0 right-4 z-0 flex h-full items-center justify-center">
                 <i className="material-icons">&#xe5cf;</i>
