@@ -89,7 +89,12 @@ import SectionStyles from '../styles/Section.module.scss';
     </Section>
   </main>
   <SideDrawer id="js--payment-drawer" />
-  <Modal title="Un momento!" content="Recomendamos encarecidamente que rellenes el formulario para que podamos definir el plan que mejor se adapta a tus metas. Recuerda que una vez pagado tienes que enviar tu comprobante a nuestro Whatsapp." id="un-momento_modal" buttons={{back: "Volver", action: "Entendido"}} />
+  <Modal
+    title="Un momento!"
+    content="Recomendamos encarecidamente que rellenes el formulario para que podamos definir el plan que mejor se adapta a tus metas. Recuerda que una vez pagado tienes que enviar tu comprobante a nuestro Whatsapp."
+    id="un-momento_modal"
+    buttons={{ back: 'Volver', action: 'Entendido' }}
+  />
 </Banner>
 <script>
   import { Planes } from '@/app/Plan';
