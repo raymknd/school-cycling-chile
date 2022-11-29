@@ -1,0 +1,87 @@
+---
+import Banner from '@/templates/Banner.astro';
+import { newTitle } from '@/utils/Functions';
+---
+
+<Banner
+  head={{
+    title: newTitle('Términos y condiciones'),
+    description: 'Conoce nuestros términos y condiciones de servicio.',
+  }}
+  content={{
+    title: 'Términos',
+    priority: 2,
+  }}
+  isHalf
+>
+  <main id="main-content">
+    <div class="terms-container">
+      <h2 class="text-2xl">Términos y condiciones</h2>
+      <small class="opacity-50"
+        >Última vez actualizado: 23 de Noviembre del 2022</small
+      >
+      <p>
+        Los presentes términos y condiciones están presentes a cambios sin
+        previo aviso, y es responsabilidad del usuario revisar periódicamente
+        este texto.
+      </p>
+      <h3 class="my-3 text-xl">Condiciones de contratación</h3>
+      <p class="mt-0">
+        La contratación de cualquiera de los servicios o adquisición de uno o
+        más productos supone que, como usuario, has leído, reconoces y aceptas
+        en su totalidad los términos y condiciones expuestos a continuación:
+      </p>
+      <p>
+        Por el sólo hecho de realizar el pago de la mensualidad o
+        trimestralidad, el usuario declara lo siguiente: "Me encuentro en estado
+        de salud óptimo para seguir un plan de entrenamiento deportivo con
+        enfoque en ciclismo y todas su variantes. Además, eximo de toda
+        responsabilidad al personal que imparte el servicio, auspiciadores,
+        patrocinadores u otras instituciones participantes ante cualquier
+        accidente o lesión que pudiera sufrir antes, durante y/o después de los
+        entrenamientos prescritos, renunciando desde ya a cualquier acción legal
+        en contra de cualquiera de dichas entidades.
+      </p>
+      <h3 class="my-3 text-xl">Uso del sitio web</h3>
+      <p class="mt-0">
+        No garantizamos que la información disponible en este sitio web sea
+        siempre exacta y completa. No asumimos ninguna responsabilidad por
+        cualquier daño directo, indirecto, accidental, consecuencia de otro,
+        penalización o daño especial derivado de o que guarda relación con el
+        uso por parte de usted o la incapacidad de utilizar el contenido
+        disponible en nuestra página web.
+      </p>
+      <p>
+        Si usted permanece en este sitio web, acepta lo anteriormente
+        mencionado.
+      </p>
+    </div>
+  </main>
+</Banner>
+<style lang="scss">
+  .terms-container {
+    max-width: 878px;
+    margin: 32px auto;
+    min-height: 30vh;
+    padding: 1.75rem;
+    h2,
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+    }
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
+    }
+  }
+</style>
+<script>
+  import { Planes } from '@/app/Plan';
+  import { Parallax } from '../app/Parallax';
+  new Parallax('.galeria', { magnitude: 3 });
+  new Planes();
+</script>

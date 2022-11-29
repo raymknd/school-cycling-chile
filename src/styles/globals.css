@@ -31,3 +31,6 @@ small {
   background: rgba(0, 0, 0, 0.5);
   margin: 1rem 0;
 }
+.container-max-width {
+  max-width: 1100px;
+}

@@ -33,7 +33,7 @@ body:global(.isIOS) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: var(--viewportHeight, 100vh);
   }
   @media only screen and (min-width: 768px) {
     width: 450px;
@@ -60,6 +60,7 @@ body:global(.isIOS) {
     overflow-y: auto;
     overflow-x: hidden;
     margin: 12px 0;
+    position: relative;
     [data-drawer=title],
     [data-drawer=price],
     [data-drawer=description] {
@@ -88,6 +89,7 @@ body:global(.isIOS) {
     .select {
       position: relative;
       select {
+        border-radius: 0;
         position: relative;
         -webkit-appearance: none;
         appearance: none;

@@ -7,11 +7,24 @@ export interface IBackgrounds {
   className?: string;
 }
 
+export interface IRRSS {
+  name: string;
+  href: string;
+  iconClasses: string;
+}
+
+export interface IPatrocinadores {
+  name: string;
+  link: string;
+  image: string;
+}
+
 const PROVIDER_DATA = {
   provider: 'Mercado Pago',
   href: {
     monthly: 'https://www.mercadopago.cl/home',
     quarterly: 'https://www.mercadopago.cl/home',
+    annually: '',
   },
 };
 
@@ -23,6 +36,10 @@ const PLANES_SHARED_DATA = {
   quarterly: {
     bankTransfer: '180.000',
     paymentGateway: '186.840',
+  },
+  annually: {
+    bankTransfer: '',
+    paymentGateway: '',
   },
 };
 
@@ -47,6 +64,17 @@ const PLANES_SHARED_PRICES: IPlanProps['price'] = {
       provider: PROVIDER_DATA.provider,
       href: PROVIDER_DATA.href.quarterly,
       price: PLANES_SHARED_DATA.quarterly.paymentGateway,
+    },
+  },
+  annually: {
+    bankTransfer: {
+      href: '',
+      price: PLANES_SHARED_DATA.annually.bankTransfer,
+    },
+    paymentGateway: {
+      provider: PROVIDER_DATA.provider,
+      href: PROVIDER_DATA.href.annually,
+      price: PLANES_SHARED_DATA.annually.paymentGateway,
     },
   },
 };
@@ -134,5 +162,51 @@ export const BACKGROUNDS: IBackgrounds[] = [
     src: '/static/images/school-cycling_planes-banner.jpeg',
     type: 'image',
     className: 'object-bottom',
+  },
+];
+
+export const RRSS: IRRSS[] = [
+  {
+    name: 'Whatsapp',
+    href: '',
+    iconClasses: 'fa-brands fa-whatsapp',
+  },
+  {
+    name: 'Instagram',
+    href: '',
+    iconClasses: 'fa-brands fa-instagram',
+  },
+  {
+    name: 'Facebook',
+    href: '',
+    iconClasses: 'fa-brands fa-facebook',
+  },
+];
+
+export const PATROCINADORES: IPatrocinadores[] = [
+  {
+    name: 'Rehab',
+    link: 'https://rehabsport.cl',
+    image: '/static/images/cropped-gen_logo.png',
+  },
+  {
+    name: 'Skyland',
+    link: 'https://fulldeportes.cl/categoria-producto/marcas/skyland/',
+    image: '/static/images/logo-skyland.png',
+  },
+  {
+    name: 'Full Deportes',
+    link: 'https://fulldeportes.cl',
+    image: '/static/images/fulldeportes-logo-sc.png',
+  },
+  {
+    name: 'Nutrend',
+    link: 'https://www.nutrend.cl',
+    image: '/static/images/nutrend-logo.webp',
+  },
+  {
+    name: 'Limpo',
+    link: 'https://limpoapp.cl',
+    image: '/static/images/logo_color.svg',
   },
 ];

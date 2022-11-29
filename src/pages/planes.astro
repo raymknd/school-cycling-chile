@@ -1,7 +1,8 @@
 ---
 import { Paragraph, Typography } from '@/components/Typography';
 import { PLANES } from '@/constants/content';
-import { OutlinedButton } from '@/partials/Button';
+import { LinkButton, OutlinedButton } from '@/partials/Button';
+import Modal from '@/partials/Modal';
 import { Plan } from '@/partials/Plan';
 import { Section } from '@/partials/Section';
 import Banner from '@/templates/Banner.astro';
@@ -25,11 +26,30 @@ import SectionStyles from '../styles/Section.module.scss';
       <Paragraph className="mt-4">
         Para dar inicio al proceso de entrenamiento con School Cycling, deberás
         llenar la ficha de antecedentes personales y deportiva. Gracias a la
-        información recolectada te ayudamos a escoger el que más se ajuste a tus
-        necesidades. Contamos con más de 12 planes de entrenamientos
-        estructurados para cada disciplina. Si tienes dudas, solo nos consultas
-        y te responderemos lo antes posible.
+        información recolectada te podemos ayudar a escoger el plan que más se
+        ajuste a tus metas. Contamos con más de 12 planes de entrenamientos
+        estructurados para cada disciplina. Si tienes dudas, estamos para ti,
+        contactanos y te responderemos a la brevedad
       </Paragraph>
+      <div class="mt-6 flex flex-row flex-wrap items-center gap-1">
+        <OutlinedButton
+          href={newWhatsappMessage(
+            'Hola! Quiero rellenar el formulario para saber que plan se acomoda a mis necesidades.'
+          )}
+          target="_blank"
+          rel="noopener noreferrer">Empecemos</OutlinedButton
+        >
+        <LinkButton
+          target="_blank"
+          rel="noopener noreferrer"
+          href={newWhatsappMessage('Hola! Necesito ayuda para elegir un plan.')}
+        >
+          <div class="flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp fa-xl"></i>
+            <span class="underline">Hablemos</span>
+          </div>
+        </LinkButton>
+      </div>
     </Section>
     {
       PLANES.map((p) => {
@@ -55,9 +75,11 @@ import SectionStyles from '../styles/Section.module.scss';
         entrenamientos estructurados para cada disciplina. Si tienes dudas, solo
         nos consultas y te responderemos lo antes posible.</Paragraph
       >
-      <div class="mt-5 flex flex-row items-center gap-1">
+      <div class="mt-6 flex flex-row items-center gap-1">
         <OutlinedButton
           href={newWhatsappMessage('Hola! Necesito ayuda para elegir un plan.')}
+          target="_blank"
+          rel="noopener noreferrer"
           ><div class="flex items-center gap-2">
             <i class="fa-brands fa-whatsapp fa-xl"></i>
             <span>Hablemos</span>
@@ -67,6 +89,7 @@ import SectionStyles from '../styles/Section.module.scss';
     </Section>
   </main>
   <SideDrawer id="js--payment-drawer" />
+  <Modal title="Un momento!" content="Recomendamos encarecidamente que rellenes el formulario para que podamos definir el plan que mejor se adapta a tus metas. Recuerda que una vez pagado tienes que enviar tu comprobante a nuestro Whatsapp." id="un-momento_modal" buttons={{back: "Volver", action: "Entendido"}} />
 </Banner>
 <script>
   import { Planes } from '@/app/Plan';

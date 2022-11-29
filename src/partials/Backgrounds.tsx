@@ -28,7 +28,6 @@ const Background = (props: { priority: number }) => {
             playsInline
             loop
             muted
-            autoPlay
             draggable="false"
             // eslint-disable-next-line tailwindcss/no-custom-classname
             className={`${e.name} ${styles.media} ${

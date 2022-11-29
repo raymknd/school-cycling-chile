@@ -24,3 +24,6 @@ export function iOS() {
     (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
   );
 }
+
+export const isSafari = () =>
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);

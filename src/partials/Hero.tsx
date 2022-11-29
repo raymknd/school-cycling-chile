@@ -16,9 +16,8 @@ const Hero = (props: {
   return (
     <div
       className={`${styles.root} ${
-        height === 'half' ? 'h-[50vh!important]' : 'hasFullViewportHeight'
+        height === 'half' ? styles.halfHeight : styles.fullHeight
       }`}
-      data-extra={height === 'half' ? undefined : '75'}
     >
       <Background priority={priority} />
       <div

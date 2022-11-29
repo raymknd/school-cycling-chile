@@ -64,7 +64,7 @@ const SideDrawer = (props: IDrawerProps) => {
               </small>
             </Typography>
             <Paragraph className="mt-2 opacity-50">¿De qué trata?</Paragraph>
-            <Paragraph data-drawer="description" className="mt-2" />
+            <Paragraph data-drawer="description" className="mb-2" />
           </div>
           <div className={styles.bottom}>
             <div className={styles.select}>
@@ -110,13 +110,13 @@ const SideDrawer = (props: IDrawerProps) => {
               </span>
             </OutlinedButton>
             <small className="mt-4 block opacity-50">
-              *La pasarela de pago tiene un cargo extra, puedes leer más{' '}
-              <a
-                data-drawer="paymentGatewayInfo"
-                href="#"
-                className="underline"
-              >
-                aquí
+              *La pasarela de pago tiene un cargo extra.
+            </small>
+            <small className="mt-2 block opacity-50">
+              Por el sólo hecho realizar el pago de la mensualidad,
+              trimestralidad o anualidad, aceptas nuestros{' '}
+              <a href="/terminos" className="underline">
+                términos y condiciones de servicio
               </a>
               .
             </small>

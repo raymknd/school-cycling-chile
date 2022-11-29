@@ -12,6 +12,16 @@ export class Background {
     this.d = document;
     // this.b = this.d.body as HTMLBodyElement;
     this.backgrounds = BACKGROUNDS;
+    this.loop = this.loop.bind(this);
+
+    this.loop((e) => {
+      const el = this.d.querySelector(`.${e.name}`);
+      if (el instanceof HTMLVideoElement) {
+        el.play().catch(() => {
+          el.poster = '/static/images/school-cycling_galeria-banner.jpeg';
+        });
+      }
+    });
   }
 
   private loop(f: (e: IBackgrounds) => void) {

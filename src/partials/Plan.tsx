@@ -19,6 +19,7 @@ export interface IPricesProviders {
 export interface IPricesStructure {
   monthly: IPricesProviders;
   quarterly: IPricesProviders;
+  annually: IPricesProviders;
 }
 
 export interface IPlanProps extends ISection {

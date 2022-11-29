@@ -1,5 +1,5 @@
 .root {
-  height: calc(100vh + 75px);
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -12,6 +12,12 @@
     display: table;
     content: " ";
   }
+}
+.root.fullHeight {
+  height: calc(var(--viewportHeight, 100vh) + 75px);;
+}
+.root.halfHeight {
+  height: 50vh;
 }
 .outTriangles {
   clip-path: polygon(50% 100%, 100% 0, 100% 100%, 0 100%, 0 0);

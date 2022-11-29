@@ -1,4 +1,4 @@
-import { iOS } from '@/utils/Functions';
+import { iOS, isSafari } from '@/utils/Functions';
 
 export interface ParallaxOptions {
   magnitude?: number | 4;
@@ -58,7 +58,7 @@ export class Parallax {
     const y = s.y / m;
     if (s.y === 0) el.removeAttribute('style');
     if (s.y > 0 && el.offsetHeight >= s.y) {
-      if (!iOS()) yParallax(y, el);
+      if (!iOS() && !isSafari()) yParallax(y, el);
     }
   }
 }

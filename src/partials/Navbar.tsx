@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Burger } from '@/components/MenuBurger';
+import { RRSS } from '@/constants/content';
 import { NAV_LINKS, SYSTEM_IDS } from '@/constants/system';
 
 import styles from '../styles/Nav.module.scss';
@@ -40,6 +41,15 @@ const Navbar = () => {
         </ul>
       </nav>
       <div className={styles.icon}>
+        <ul className="hidden flex-row items-center gap-3 md:flex">
+          {RRSS.map((r) => (
+            <li>
+              <a href={r.href} aria-label={r.name}>
+                <i className={`${r.iconClasses} fa-xl`}></i>
+              </a>
+            </li>
+          ))}
+        </ul>
         <Burger />
         {/* <WhatsappIcon /> */}
       </div>

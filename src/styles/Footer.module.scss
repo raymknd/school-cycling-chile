@@ -5,3 +5,16 @@
 .small {
   font-family: "Montserrat", sans-serif;
 }
+.patrocinador {
+  text-align: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    img {
+      height: 50px;
+      object-fit: contain;
+    }
+  }
+}

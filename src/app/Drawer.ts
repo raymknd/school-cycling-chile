@@ -1,6 +1,7 @@
 import { newWhatsappMessage } from '@/utils/Functions';
 
 import type { IPlan, IPricesStructure } from '../partials/Plan';
+import { Modal } from './Modal';
 
 interface IOpenArgs {
   title?: string;
@@ -48,6 +49,8 @@ export class Drawer {
   backdrop: Element;
 
   priceSeparator: string;
+
+  modal: Modal;
 
   constructor(rootSelector: string) {
     this.w = window;
@@ -100,14 +103,26 @@ export class Drawer {
 
     this.priceSeparator = '→';
 
+    this.modal = new Modal('#un-momento_modal');
+
     this.setDisplayData = this.setDisplayData.bind(this);
     this.clearAll = this.clearAll.bind(this);
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.handleModal = this.handleModal.bind(this);
 
     this.closeBtn.onclick = this.handleDrawerClose;
     if (this.backdrop) this.backdrop.onclick = this.handleDrawerClose;
+
+    this.paymentGateway.onclick = this.handleModal;
+    this.transferencia.onclick = this.handleModal;
+  }
+
+  private handleModal(e: any) {
+    e.preventDefault();
+    this.modal.actionButton.href = e.currentTarget.href;
+    this.modal.open();
   }
 
   private getPriceStructure(p: string, s?: string) {
@@ -163,6 +178,7 @@ export class Drawer {
 
       const a = this.d.createElement('option');
       const b = this.d.createElement('option');
+      const c = this.d.createElement('option');
 
       a.value = JSON.stringify({
         paymentGateway: prices.monthly.paymentGateway,
@@ -178,12 +194,20 @@ export class Drawer {
       });
       b.innerHTML = 'Trimestral (3 meses)';
 
+      c.value = JSON.stringify({
+        paymentGateway: prices.annually.paymentGateway,
+        bankTransfer: prices.annually.bankTransfer,
+        billingCycle: 'annually',
+      });
+      c.innerHTML = 'Anual (1 año)';
+
       this.paymentGatewayProvider.innerHTML =
         prices.monthly.paymentGateway.provider;
       this.paymentGateway.ariaLabel = `Pagar con ${prices.monthly.paymentGateway.provider}`;
 
       if (this.select) this.select.appendChild(a);
       if (this.select) this.select.appendChild(b);
+      if (this.select) this.select.appendChild(c);
     }
   }
 
@@ -204,6 +228,17 @@ export class Drawer {
           },
         },
         quarterly: {
+          bankTransfer: {
+            href: '',
+            price: '',
+          },
+          paymentGateway: {
+            provider: '',
+            href: '',
+            price: '',
+          },
+        },
+        annually: {
           bankTransfer: {
             href: '',
             price: '',
@@ -283,12 +318,23 @@ export class Drawer {
         this.transferenciaPrice.innerHTML = this.getPriceStructure(
           v.bankTransfer.price
         );
+
+        const getBillingCycle = () => {
+          switch (v.billingCycle) {
+            case 'monthly':
+              return 'Mensual';
+            case 'quarterly':
+              return 'Trimestral';
+            case 'annually':
+            default:
+              return 'Anual';
+          }
+        };
+
         this.transferencia.href = newWhatsappMessage(
           `Hola! Quiero los datos de transferencia para el plan "${
             data.title
-          } - ${
-            v.billingCycle === 'monthly' ? 'Mensual' : 'Trimestral'
-          }", por favor!`
+          } - ${getBillingCycle()}"`
         );
       };
     }

@@ -72,14 +72,32 @@ import SectionStyles from '../styles/Section.module.scss';
       }}
     >
       <Typography variant="h2">Gente común, cosas increíbles.</Typography>
-      <Paragraph className="mt-3"
+      <Paragraph className="mt-4"
         >Cuando buscas cumplir algún objetivo personal, deportivo o simplemente
         de salud, siempre buscamos generar la instancia óptima e individualizar
         tu planificación.</Paragraph
       >
       <small class="mt-3 block opacity-50"
-        >En la foto: Nacho Paredes, integrante de School Cycling</small
-      >
+        >En la foto: Integrantes de School Cycling y ejemplos constancia y
+        perseverancia:
+        <ul class="mt-2 flex flex-col gap-2">
+          <li class="flex flex-row items-center gap-2">
+            <i class="material-icons">&#xf06e;</i>
+            <div>
+              <strong>Alfredo Ramos</strong>, ciclista de MTB, actual campeón
+              del campeonato de MTB de la VI región 2022.
+            </div>
+          </li>
+          <li class="flex flex-row items-center gap-2">
+            <i class="material-icons">&#xf06e;</i>
+            <div>
+              <strong>Sofía González</strong>, Ciclista de Cruterium y
+              Ciclocross, 1er lugar en competencias como CrudoCrit Chile y Copa
+              Chile de Ciclocross.
+            </div>
+          </li>
+        </ul>
+      </small>
     </Section>
     <Section
       hasIn
@@ -100,9 +118,11 @@ import SectionStyles from '../styles/Section.module.scss';
         entrenamientos estructurados para cada disciplina. Si tienes dudas, solo
         nos consultas y te responderemos lo antes posible.</Paragraph
       >
-      <div class="mt-5 flex flex-row items-center gap-1">
+      <div class="mt-6 flex flex-row items-center gap-1">
         <OutlinedButton href="/planes">Ver los planes</OutlinedButton>
         <LinkButton
+          target="_blank"
+          rel="noopener noreferrer"
           href={newWhatsappMessage('Hola! Necesito ayuda para elegir un plan.')}
         >
           <div class="flex items-center gap-2">
