@@ -22,7 +22,7 @@ import { AppConfig } from '@/utils/AppConfig';
 export interface IBase {
   head: {
     title: string;
-    description: string;
+    description?: string;
   };
 }
 
@@ -42,11 +42,13 @@ const {
     <link
       rel="shortcut icon"
       href="/static/images/school-cycling-isotipo-colores-grises.svg"
-      type="image/svg+xml"
+      type="image/x-icon"
     />
     <SEO
       title={title}
-      description={`${description} | ${AppConfig.description}`}
+      description={description
+        ? `${description} | ${AppConfig.description}`
+        : AppConfig.description}
       canonical={'https://schoolcycling.cl'}
       openGraph={{
         basic: {
@@ -61,7 +63,6 @@ const {
         },
         optional: { locale: AppConfig.locale },
       }}
-      noindex
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link

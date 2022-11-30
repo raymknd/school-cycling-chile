@@ -44,7 +44,12 @@ const Navbar = () => {
         <ul className="hidden flex-row items-center gap-3 md:flex">
           {RRSS.map((r) => (
             <li>
-              <a href={r.href} aria-label={r.name}>
+              <a
+                href={r.href}
+                aria-label={r.name}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <i className={`${r.iconClasses} fa-xl`}></i>
               </a>
             </li>

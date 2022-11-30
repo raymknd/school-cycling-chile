@@ -49,7 +49,12 @@ const Footer = () => {
         <ul className="my-2 flex flex-row items-center gap-3">
           {RRSS.map((r) => (
             <li key={r.name}>
-              <a href={r.href} aria-label={r.name}>
+              <a
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={r.name}
+              >
                 <i className={`${r.iconClasses} fa-xl`}></i>
               </a>
             </li>
@@ -61,7 +66,7 @@ const Footer = () => {
             className="underline"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://pcbkn.cl/proyectos/school-cycling?utm_source=schoolcycling&utm_medium=footer"
+            href="https://go.pcbkn.cl/school-cycling"
           >
             PcBkn
           </a>
@@ -69,7 +74,7 @@ const Footer = () => {
         <small className="mt-2 block opacity-50">
           Al usar este sitio web aceptas nuestros{' '}
           <a href="/terminos" className="underline">
-            Términos y condiciones
+            términos y condiciones
           </a>{' '}
           relacionados al uso del mismo.
         </small>

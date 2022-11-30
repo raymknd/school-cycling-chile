@@ -1,0 +1,56 @@
+---
+import { Paragraph, Typography } from '@/components/Typography';
+import Base from '@/templates/Base.astro';
+---
+
+<Base head={{ title: 'Al parecer te perdiste...' }}>
+  <main class="school-cycling_root">
+    <div class="school-cycling_root-background"></div>
+    <div class="school-cycling_root-content">
+      <Typography variant="h1">404</Typography>
+      <Paragraph className="mt-2"
+        >Parece que no estás donde deberías estar, o quizás si, pero en
+        definitiva este lugar no existe.</Paragraph
+      >
+      <a href="/">← Volver al inicio</a>
+    </div>
+  </main>
+</Base>
+<style lang="scss">
+  .school-cycling_root {
+    height: var(--viewportHeight, 100vh);
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($color: #000000, $alpha: 0.5);
+    .school-cycling_root-content {
+      max-width: 578px;
+      padding: 0 1.5rem;
+      width: 100%;
+      text-align: center;
+      z-index: 1;
+      color: #fff;
+      a {
+        margin-top: 0.5rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        color: #e8c617;
+      }
+    }
+    .school-cycling_root-background {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      background-image: url('/static/images/school-cycling_galeria-banner.jpeg');
+      background-position: center;
+      background-size: cover;
+      filter: grayscale(100%) brightness(40%);
+    }
+  }
+</style>

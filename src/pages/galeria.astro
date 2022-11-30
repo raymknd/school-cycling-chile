@@ -11,7 +11,7 @@ import { Loader } from '../partials/Loader';
 <Banner
   head={{
     title: newTitle('Galería'),
-    description: 'Echale una mirada a nuestra galería',
+    description: 'Visita nuestra galería.',
   }}
   content={{
     title: 'Galería',
@@ -32,15 +32,16 @@ import { Loader } from '../partials/Loader';
       </div>
       <InfoDisplay
         id="js--gallery-loader"
-        message="Cargando imagenes..."
-        iconClasses="fa-solid fa-circle-notch animate-spin"
+        message="Cargando imágenes..."
+        iconClasses="is-loading"
+        icon={`&#xe863;`}
         hidden={true}
       />
       <InfoDisplay
         zIndex={-1}
         id="js--gallery-error"
         message="Hubo un error, vuelve a intentar más tarde."
-        iconClasses="fa-solid fa-circle-exclamation"
+        icon={`&#xe000;`}
         hidden={true}
       />
       <InfoDisplay
@@ -48,13 +49,14 @@ import { Loader } from '../partials/Loader';
         id="js--gallery-full"
         message="Eso es todo, llegaste al final."
         iconClasses="fa-solid fa-thumbs-up"
+        icon=""
         hidden={true}
       />
       <InfoDisplay
         zIndex={-1}
         id="js--gallery-empty"
         message="Aún no hay contenido para mostrar, vuelve más tarde."
-        iconClasses="fa-solid fa-face-dizzy"
+        icon={`&#xe887;`}
         hidden={true}
       />
     </div>

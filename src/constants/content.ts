@@ -1,5 +1,7 @@
 import type { IPlanProps } from '@/partials/Plan';
 
+import { WHATSAPP_LINK } from './system';
+
 export interface IBackgrounds {
   name: string;
   src: string;
@@ -22,24 +24,24 @@ export interface IPatrocinadores {
 const PROVIDER_DATA = {
   provider: 'Mercado Pago',
   href: {
-    monthly: 'https://www.mercadopago.cl/home',
-    quarterly: 'https://www.mercadopago.cl/home',
-    annually: '',
+    monthly: 'https://mpago.la/1VyZx6F',
+    quarterly: 'https://mpago.la/2xs8B6M',
+    annually: 'https://mpago.la/2rNN3dp',
   },
 };
 
 const PLANES_SHARED_DATA = {
   monthly: {
-    bankTransfer: '65.000',
-    paymentGateway: '67.470',
+    bankTransfer: '70.000',
+    paymentGateway: '72.660',
   },
   quarterly: {
-    bankTransfer: '180.000',
-    paymentGateway: '186.840',
+    bankTransfer: '195.000',
+    paymentGateway: '202.410',
   },
   annually: {
-    bankTransfer: '',
-    paymentGateway: '',
+    bankTransfer: '720.000',
+    paymentGateway: '747.360',
   },
 };
 
@@ -168,19 +170,19 @@ export const BACKGROUNDS: IBackgrounds[] = [
 export const RRSS: IRRSS[] = [
   {
     name: 'Whatsapp',
-    href: '',
+    href: WHATSAPP_LINK,
     iconClasses: 'fa-brands fa-whatsapp',
   },
   {
     name: 'Instagram',
-    href: '',
+    href: 'https://www.instagram.com/school.cycling.chile/',
     iconClasses: 'fa-brands fa-instagram',
   },
-  {
-    name: 'Facebook',
-    href: '',
-    iconClasses: 'fa-brands fa-facebook',
-  },
+  // {
+  //   name: 'Facebook',
+  //   href: '',
+  //   iconClasses: 'fa-brands fa-facebook',
+  // },
 ];
 
 export const PATROCINADORES: IPatrocinadores[] = [

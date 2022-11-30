@@ -269,7 +269,7 @@ export class Galeria {
   private async infiniteScrollHandler() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
     if (
-      scrollTop + clientHeight >= scrollHeight - 150 &&
+      scrollTop + clientHeight >= scrollHeight - 400 &&
       !this.isFull() &&
       !this.busy
     ) {

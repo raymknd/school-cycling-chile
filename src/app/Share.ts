@@ -1,8 +1,8 @@
 interface IIcons {
-  success: HTMLDivElement | undefined;
-  default: HTMLDivElement | undefined;
-  loading: HTMLDivElement | undefined;
-  error: HTMLDivElement | undefined;
+  success: string;
+  default: string;
+  loading: string;
+  error: string;
 }
 
 class Share {
@@ -13,6 +13,8 @@ class Share {
   root: HTMLAnchorElement | undefined;
 
   datasetName: string;
+
+  icon: HTMLElement | null;
 
   icons: IIcons;
 
@@ -25,11 +27,13 @@ class Share {
     this.b = this.d.body as HTMLBodyElement;
     this.root = this.d.querySelector(selector);
     this.datasetName = 'sharedata';
+    this.icon = this.d.querySelector(`${selector} .material-icons`);
+
     this.icons = {
-      success: this.d.querySelector(`${selector} .fa-circle-check`),
-      default: this.d.querySelector(`${selector} .fa-link`),
-      loading: this.d.querySelector(`${selector} .fa-circle-notch`),
-      error: this.d.querySelector(`${selector} .fa-triangle-exclamation`),
+      success: '&#xe876;',
+      default: '&#xe6b8;',
+      loading: '&#xe863;',
+      error: '&#xe002;',
     };
 
     this.Init = this.Init.bind(this);
@@ -113,31 +117,23 @@ class Share {
   }
 
   private setSuccess() {
-    this.icons.default.setAttribute('hidden', '');
-    this.icons.loading.setAttribute('hidden', '');
-    this.icons.error.setAttribute('hidden', '');
-    this.icons.success.removeAttribute('hidden');
+    if (this.icon) this.icon.innerHTML = this.icons.success;
+    this.icon.classList.remove('is-loading');
   }
 
   private setError() {
-    this.icons.default.setAttribute('hidden', '');
-    this.icons.loading.setAttribute('hidden', '');
-    this.icons.success.setAttribute('hidden', '');
-    this.icons.error.removeAttribute('hidden');
+    if (this.icon) this.icon.innerHTML = this.icons.error;
+    this.icon.classList.remove('is-loading');
   }
 
   private setLoading() {
-    this.icons.default.setAttribute('hidden', '');
-    this.icons.success.setAttribute('hidden', '');
-    this.icons.error.setAttribute('hidden', '');
-    this.icons.loading.removeAttribute('hidden');
+    if (this.icon) this.icon.innerHTML = this.icons.loading;
+    this.icon.classList.add('is-loading');
   }
 
   private setDefault() {
-    this.icons.loading.setAttribute('hidden', '');
-    this.icons.success.setAttribute('hidden', '');
-    this.icons.error.setAttribute('hidden', '');
-    this.icons.default.removeAttribute('hidden');
+    if (this.icon) this.icon.innerHTML = this.icons.default;
+    this.icon.classList.remove('is-loading');
   }
 }
 

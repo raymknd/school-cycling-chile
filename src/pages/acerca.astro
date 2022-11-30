@@ -30,7 +30,7 @@ const description = `Conoce más acerca de School Cycling`;
         <small class="mb-2">Compartir</small>
         <div class="flex flex-row items-center lg:flex-col">
           <a
-            class="p-2 lg:py-2 lg:px-0"
+            class="flex p-2 lg:py-2 lg:px-0"
             href="#"
             id="js--share-article"
             data-shareData={JSON.stringify({
@@ -38,10 +38,7 @@ const description = `Conoce más acerca de School Cycling`;
               url: 'https://schoolcycling.cl/acerca',
             })}
           >
-            <i class="fa-solid fa-link fa-xl"></i>
-            <i class="fa-solid fa-circle-notch fa-xl animate-spin" hidden></i>
-            <i class="fa-solid fa-circle-check fa-xl" hidden></i>
-            <i class="fa-solid fa-triangle-exclamation fa-xl" hidden></i>
+            <i class="material-icons">&#xe6b8;</i>
           </a>
           <a
             class="p-2 lg:py-2 lg:px-0"
@@ -143,9 +140,8 @@ const description = `Conoce más acerca de School Cycling`;
               href={newWhatsappMessage(
                 'Hola! Tengo dudas sobre las mejoras de condición física que puedo recibir.'
               )}
-              ><div class="flex items-center">
-                Quiero saber más <i class="fa-solid fa-arrow-right fa-lg ml-2"
-                ></i>
+              ><div class="flex items-center gap-1">
+                Quiero saber más <i class="material-icons">&#xe5c8;</i>
               </div>
             </OutlinedButton>
           </div>
