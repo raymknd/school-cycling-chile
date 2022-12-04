@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { iOS, isSafari } from '@/utils/Functions';
 
 export interface ParallaxOptions {
@@ -56,7 +57,7 @@ export class Parallax {
     const m = this.options?.magnitude || 4;
 
     const y = s.y / m;
-    if (s.y === 0) el.removeAttribute('style');
+    if (s.y === 0) el.style.transform = '';
     if (s.y > 0 && el.offsetHeight >= s.y) {
       if (!iOS() && !isSafari()) yParallax(y, el);
     }

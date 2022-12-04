@@ -62,6 +62,10 @@ export class Galeria {
 
   private emptySet: HTMLElement | null;
 
+  private patrocinadores: HTMLElement | null;
+
+  private footer: HTMLElement | null;
+
   constructor(rootSelector: string) {
     this.d = document;
     // this.w = window;
@@ -99,6 +103,11 @@ export class Galeria {
     this.fullContent = this.d.querySelector('#js--gallery-full');
     this.errorContainer = this.d.querySelector('#js--gallery-error');
     this.emptySet = this.d.querySelector('#js--gallery-empty');
+
+    this.patrocinadores = this.d.getElementById(
+      'school-cycling_patrocinadores'
+    );
+    this.footer = this.d.getElementById('school-cycling_footer');
 
     this.init = this.init.bind(this);
     this.appendPage = this.appendPage.bind(this);
@@ -268,8 +277,11 @@ export class Galeria {
 
   private async infiniteScrollHandler() {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    const patrocinadoresHeight = this.patrocinadores.clientHeight;
+    const footerHeight = this.footer.clientHeight;
+    const totalHeight = patrocinadoresHeight + footerHeight + 200;
     if (
-      scrollTop + clientHeight >= scrollHeight - 400 &&
+      scrollTop + clientHeight >= scrollHeight - totalHeight &&
       !this.isFull() &&
       !this.busy
     ) {

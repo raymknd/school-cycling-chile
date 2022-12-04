@@ -163,7 +163,7 @@ export const BACKGROUNDS: IBackgrounds[] = [
     name: 'planes',
     src: '/static/images/school-cycling_planes-banner.jpeg',
     type: 'image',
-    className: 'object-bottom',
+    className: '!bg-bottom',
   },
 ];
 
