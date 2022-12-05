@@ -3,7 +3,7 @@ import { WHATSAPP_LINK } from '@/constants/system';
 import { AppConfig } from './AppConfig';
 
 export const newTitle = (title: string) => {
-  return `${AppConfig.title} ▸ ${title}`;
+  return `${AppConfig.title} | ${title}`;
 };
 
 export const newWhatsappMessage = (msg: string) => {

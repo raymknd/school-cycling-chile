@@ -11,6 +11,7 @@ const Footer = () => {
     <React.Fragment>
       <section
         className={`container-max-width mx-auto mt-12 mb-6 flex flex-col gap-10 px-6 text-center`}
+        id="school-cycling_patrocinadores"
       >
         <Typography variant="h3" className="opacity-60">
           Nuestros patrocinadores
@@ -34,7 +35,10 @@ const Footer = () => {
           })}
         </ul>
       </section>
-      <footer className="relative mx-auto flex w-full flex-col items-start py-8 px-10 opacity-70">
+      <footer
+        className="relative mx-auto flex w-full flex-col items-start py-8 px-10 opacity-70"
+        id="school-cycling_footer"
+      >
         <img
           src="/static/images/school-cycling-imagotipo-grises.svg"
           className={styles.footerImage}

@@ -12,6 +12,11 @@
     height: 100%;
     width: 100%;
 }
+.media.background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .media {
     height: 100% !important;
     width: 100%;
@@ -22,7 +27,7 @@
     left: 0;
     display: block;
     user-select: none;
-    background: gray;
+    background-color: gray;
 }
 .media.isPriority,
 .media.isPriority {

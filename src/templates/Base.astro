@@ -44,12 +44,15 @@ const {
       href="/static/images/school-cycling-isotipo-colores-grises.svg"
       type="image/x-icon"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="manifest" href="/manifest.json" />
     <SEO
       title={title}
       description={description
         ? `${description} | ${AppConfig.description}`
         : AppConfig.description}
       canonical={'https://schoolcycling.cl'}
+      canonical=""
       openGraph={{
         basic: {
           title: AppConfig.title,
